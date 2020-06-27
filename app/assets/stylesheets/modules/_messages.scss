@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+}
+.wrapper {
+  display: flex;
+
+// サイドバーエリアです⬇︎
+
+.SideBar {
+  height: 100vh;
+  width: 300px;
+  background-color: #2f3e51;
+  color: #fff;
+
+// ユーザー情報エリア部分です⬇︎
+  .user-info{
+      background-color: #253141;
+      height: 100px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+
+      &__list {
+        display: flex;
+        justify-content: space-between;
+        height: 20px;
+        width: 260px;
+
+        &__name {
+          font-size: 16px;
+          font-weight: bold;
+        }
+        &__icons {
+          display: flex;
+          justify-content: end;
+        }
+        &__icons li {
+          margin-right: 5px;
+        }
+        &__icons a {
+          color: #fff;
+        }
+      }
+    }
+
+//グループ一覧エリアです⬇︎
+  .group-list {
+      height: calc(100vh - 100px);
+      background-color: #2f3e51;
+      padding: 0 20px;
+
+        &__group {
+          padding: 20px 0 40px;
+          box-sizing: border-box;
+
+          & a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+          }
+          &__name {
+            font-size: 15px;
+          }
+          &__message {
+            font-size: 11px;
+            margin-top: 5px;
+          }
+      }
+    }
+  }
+
+
+//メインチャットエリアです⬇︎
+
+.MainChat {
+  height: 100vh;
+  width: calc(100vw - 300px);
+  background-color: #ffffff;
+
+//グループ名と、メンバー名の部分です⬇︎
+  .group-info {
+    height:100px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+
+    &__list {
+      &__group-name {
+        color: #333333;
+        font-size: 20px;
+        margin-top: 35px;
+      }
+      &__member-list {
+        display: flex;
+        color: #999999;
+        font-size: 12px;
+        margin-top: 15px;
+      }
+
+    }
+    .edit-buttun {
+      display: block;
+      padding: 0 20px;
+      margin-top: 28px;
+      height: 40px;
+      line-height: 40px;
+      width: 72px;
+      font-size: 16px;
+      color: #38aef0;
+      border: 1px solid #38aef0;
+      text-decoration: none;
+    }
+  }
+
+// メッセージ表示蘭です⬇︎
+  .message-area {
+    height: calc(100vh - 190px);
+    background-color: #fafafa;
+    padding: 35px 40px 0;
+    height: calc(100vh - 190px);
+    overflow: scroll;
+
+    &__box {
+      margin-bottom: 46px;
+
+      &__user-info {
+        display: flex;
+        margin-bottom: 12px;
+
+        &__name {
+          color: #333333;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        &__date {
+          color: #999999;
+          font-size: 12px;
+          padding-left: 10px;
+        }
+      }
+      &__user-message {
+        &__content {
+          color: #434A54;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+//フッター部分のテキスト入力欄です
+  .footer {
+    height: 90px;
+    background-color: #d2d2d2;
+    padding: 20px 50px 20px 40px;
+    box-sizing: border-box;
+
+    .footer-form {
+      display: flex;
+      justify-content: space-between;
+
+      .input-box {
+        width: 100%;
+        display: flex;
+        position: relative;
+
+        &__text {
+          height: 50px;
+          width: 100%;
+          color: #434A54;
+          border-style: none;
+          padding: 0 40px 0 15px;
+        }
+        &__image {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+          font-size: 1.3rem;
+
+          &__file {
+            display: none;
+          }
+        }
+      }
+      .submit-buttun {
+        width: 100px;
+        height: 50px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #38aef0;
+        padding: 0 30px;
+        border-style: none;
+        margin-left: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+}

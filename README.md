@@ -1,3 +1,6 @@
+DB README
+
+
 ## usersテーブル
 
 |Column|Type|Options|
@@ -7,9 +10,14 @@
 |password|string|null: false|
 
 ### Association
+<<<<<<< Updated upstream
 - has_many :messages
 - has_many :groups, through: :users_groups
 - has_many :users_groups
+=======
+- has_many :messages, through: users_groups
+- has_many :groups, through: :users_groups
+>>>>>>> Stashed changes
 
 ## groupsテーブル
 
@@ -19,9 +27,14 @@
 
 
 ### Association
+<<<<<<< Updated upstream
 - has_many :messages,
 - has_many :users, through: :users_groups
 - has_many :users_groups
+=======
+- has_many :messages, through: :users_groups
+- has_many :users, through: :users_groups
+>>>>>>> Stashed changes
 
 ## messagesテーブル
 

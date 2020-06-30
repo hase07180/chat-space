@@ -35,10 +35,10 @@
 
 
   .footer
-    %form.footer-form
+    = form_with model: [@group, @message], html: {class: "footer-form"}, local: true do |f|
       .input-box
-        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
-        %label{class: "input-box__image"}
+        = f.text_field :message,  class: "input-box__text", placeholder: "type a message"
+        = f.label :image, class: "input-box__image" do
           = icon('far', 'image')
-          %input{type: "file", class: "input-box__image__file"}
-      %input{type: "submit", class: "submit-buttun", value: "Send"}
+          = f.file_field :image, class: "input-box__image__file"
+      = f.submit 'Send', class: "submit-buttun"

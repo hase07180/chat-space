@@ -12,26 +12,21 @@
 
 
   .message-area
-    .message-area__box
-      .message-area__box__user-info
-        .message-area__box__user-info__name
-          masa
-        .message-area__box__user-info__date
-          2019/11/10(Wed) 17:43:01
 
-      .message-area__box__user-message
-        %p.message-area__box__user-message__content
-          おはよう
-    .message-area__box
-      .message-area__box__user-info
-        .message-area__box__user-info__name
-          taro
-        .message-area__box__user-info__date
-          2019/11/10(Wed) 17:43:01
 
-      .message-area__box__user-message
-        %p.message-area__box__user-message__content
-          こんにちわ
+    - @messages.each do |message|
+      .message-area__box
+        .message-area__box__user-info
+          .message-area__box__user-info__name
+            = message.user.name
+          .message-area__box__user-info__date
+            = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+
+        .message-area__box__user-message
+          - if message.message.present?
+            %p.message-area__box__user-message__content
+              =message.message
+          = image_tag message.image.url, class: 'Message__image' if message.image.present?
 
 
   .footer

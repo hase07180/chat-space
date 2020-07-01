@@ -2,43 +2,41 @@
   .group-info
     .group-info__list
       .group-info__list__group-name
-        test
+        = @group.name
       %ul.group-info__list__member-list
         Member：
         %li.group-info__list__member-list__member
-          name
-    = link_to "#", class: "edit-buttun" do
+          - @group.users.each do |user|
+            = user.name
+    = link_to edit_group_path(@group.id), class: "edit-buttun" do
       Edit
 
 
   .message-area
-    .message-area__box
-      .message-area__box__user-info
-        .message-area__box__user-info__name
-          masa
-        .message-area__box__user-info__date
-          2019/11/10(Wed) 17:43:01
 
-      .message-area__box__user-message
-        %p.message-area__box__user-message__content
-          おはよう
-    .message-area__box
-      .message-area__box__user-info
-        .message-area__box__user-info__name
-          taro
-        .message-area__box__user-info__date
-          2019/11/10(Wed) 17:43:01
 
-      .message-area__box__user-message
-        %p.message-area__box__user-message__content
-          こんにちわ
+    - @messages.each do |message|
+      .message-area__box
+        .message-area__box__user-info
+          .message-area__box__user-info__name
+            = message.user.name
+          .message-area__box__user-info__date
+            = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+
+        .message-area__box__user-message
+          - if message.message.present?
+            %p.message-area__box__user-message__content
+              =message.message
+          = image_tag message.image.url, class: 'Message__image' if message.image.present?
+
+
 
 
   .footer
-    %form.footer-form
+    = form_with model: [@group, @message], html: {class: "footer-form"}, local: true do |f|
       .input-box
-        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
-        %label{class: "input-box__image"}
+        = f.text_field :message,  class: "input-box__text", placeholder: "type a message"
+        = f.label :image, class: "input-box__image" do
           = icon('far', 'image')
-          %input{type: "file", class: "input-box__image__file"}
-      %input{type: "submit", class: "submit-buttun", value: "Send"}
+          = f.file_field :image, class: "input-box__image__file"
+      = f.submit 'Send', class: "submit-buttun"
